@@ -9,8 +9,8 @@
     body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background:#0f1216; color:#fff; margin:0; padding:24px; }
     .card { max-width: 560px; margin: 0 auto; background:#141a22; border-radius:16px; padding:24px; box-shadow: 0 6px 24px rgba(0,0,0,.35); }
     .row { display:flex; gap:16px; align-items:center; }
-    img.avatar { width:72px; height:72px; border-radius:50%; object-fit:cover; background:#222; }
-    h1 { font-size:20px; margin:0 0 12px; }
+    img.avatar { width:72px; height:72px; border-radius:12px; object-fit:contain; background:#111; padding:8px; }
+    h1 { font-size:20px; margin:0 0 10px; }
     p { opacity:.85; line-height:1.45; margin: 0 0 8px; }
     .meta { font-size: 14px; opacity: .7; }
     .btns { display:flex; gap:12px; margin-top:20px; flex-wrap:wrap; }
@@ -20,7 +20,8 @@
 <body>
   <div class="card">
     <div class="row">
-      <img id="avatar" class="avatar" alt="avatar" />
+      <!-- Always show static logo.png from /p/ -->
+      <img id="avatar" class="avatar" src="logo.png" alt="Champ Football" />
       <div>
         <h1 id="name">Profile</h1>
         <p class="meta" id="uidline"></p>
@@ -29,21 +30,18 @@
     </div>
 
     <div class="btns">
-      <a id="ios" class="btn" href="https://apps.apple.com/eg/app/champ-football/id6476568316">Get on App Store</a>
-      <a id="android" class="btn" href="https://play.google.com/store/apps/details?id=com.fuad.champ&pcampaignid=web_share">Get on Google Play</a>
+      <a class="btn" href="https://apps.apple.com/eg/app/champ-football/id6476568316">Get on App Store</a>
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.fuad.champ&pcampaignid=web_share">Get on Google Play</a>
     </div>
   </div>
 
   <script>
+    // Keep name and uid dynamic (optional)
     const qp = new URLSearchParams(location.search);
     const name = qp.get('n') || 'Profile';
-    const avatar = qp.get('a') || '';
     const uid = qp.get('uid') || '';
 
     document.getElementById('name').textContent = name;
-    if (avatar) document.getElementById('avatar').src = avatar;
-    else document.getElementById('avatar').style.display = 'none';
-
     document.getElementById('uidline').textContent = uid ? `ID: ${uid}` : '';
   </script>
 </body>
