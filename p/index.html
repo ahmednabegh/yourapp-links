@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Profile • YourApp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background:#0f1216; color:#fff; margin:0; padding:24px; }
+    .card { max-width: 560px; margin: 0 auto; background:#141a22; border-radius:16px; padding:24px; box-shadow: 0 6px 24px rgba(0,0,0,.35); }
+    .row { display:flex; gap:16px; align-items:center; }
+    img.avatar { width:72px; height:72px; border-radius:50%; object-fit:cover; background:#222; }
+    h1 { font-size:20px; margin:0 0 12px; }
+    p { opacity:.85; line-height:1.45; }
+    .btns { display:flex; gap:12px; margin-top:20px; flex-wrap:wrap; }
+    .btn { text-decoration:none; padding:12px 16px; border-radius:12px; background:#1f2937; color:#fff; display:inline-flex; align-items:center; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="row">
+      <img id="avatar" class="avatar" alt="avatar" />
+      <div>
+        <h1 id="name">Profile</h1>
+        <p>View this profile on the web or get the app below.</p>
+      </div>
+    </div>
+    <div class="btns">
+      <a id="ios" class="btn" href="#">Get on App Store</a>
+      <a id="android" class="btn" href="#">Get on Google Play</a>
+    </div>
+  </div>
+  <script>
+    const qp = new URLSearchParams(location.search);
+    const name = qp.get('n') || 'Profile';
+    const avatar = qp.get('a') || '';
+    document.getElementById('name').textContent = name;
+    if (avatar) document.getElementById('avatar').src = avatar; else document.getElementById('avatar').style.display = 'none';
+
+    // TODO: replace with your real store links
+    document.getElementById('ios').href = 'https://apps.apple.com/app/id1234567890';
+    document.getElementById('android').href = 'https://play.google.com/store/apps/details?id=com.yourco.yourapp';
+  </script>
+</body>
+</html>
